@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 # Add parent directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import app
+import enterprise_search_app
 
 #function to enable loading of the .env file into the global variables of the app.py module
 
@@ -26,8 +26,8 @@ load_env_into_module("app")
 
 #some settings required in app.py
 
-app.SHOULD_STREAM = False
-app.SHOULD_USE_DATA = app.should_use_data()
+enterprise_search_app.SHOULD_STREAM = False
+enterprise_search_app.SHOULD_USE_DATA = enterprise_search_app.should_use_data()
 
 #format:
 """
@@ -58,7 +58,7 @@ async def process(data: list, file):
 
           request = {"messages":messages, "id":"1"}
 
-          response = await app.complete_chat_request(request)
+          response = await enterprise_search_app.complete_chat_request(request)
 
           #print(json.dumps(response))
 
